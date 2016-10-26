@@ -9,6 +9,8 @@ import com.onesignal.OneSignal;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private String _userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,8 +19,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void idsAvailable(String userId, String registrationId) {
 
+                _userId = userId;
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                intent.putExtra(Constant.ONE_SIGNAL, registrationId);
+                intent.putExtra(Constant.ONE_SIGNAL, _userId);
                 startActivity(intent);
                 finish();
             }
